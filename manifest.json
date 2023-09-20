@@ -1,0 +1,44 @@
+{
+    "name": "DEM Raster Merging Processor",
+    "container": "demmerge-processor",
+    "pre_processing_stage": "python3 create_processor_yml.py",
+    "execution_stage": "./main.sh",
+    "post_processing_stage": "./transfer_shared_outputs.sh",
+    "slurm_input_rules": {
+   
+           "time": {
+                "max": 60,
+                "min": 10,
+                "default_value": 10,
+                "step": 10,
+                "unit": "Minutes"   
+            },
+            "cpu_per_task": {
+                "max": 50,
+                "min": 10,
+                "default_value": 10,
+                "step": 10
+            },
+            "memory_per_cpu": {
+                "max": 2000,
+                "min": 1000,
+                "default_value": 1000,
+                "step": 200,
+                "unit": "MB"
+            }
+    },
+    "param_rules": {
+        "input_path": {
+            "type": "string_input",
+            "require": true,
+            "default_value": "N/A"
+        },
+        "merged_filename": {
+            "type": "string_input",
+            "require": true,
+            "default_value": "merged_dem"
+        }
+    },
+    "supported_hpc": ["anvil_community"],
+    "default_hpc": "anvil_community"
+}

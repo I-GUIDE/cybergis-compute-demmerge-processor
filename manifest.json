@@ -27,6 +27,11 @@
             "require": true,
             "default_value": "N/A"
         },
+        "site_id": {
+            "type": "string_input",
+            "require": true,
+            "default_value": "09241000"
+        },
         "merged_filename": {
             "type": "string_input",
             "require": true,
